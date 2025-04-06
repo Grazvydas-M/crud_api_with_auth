@@ -1,6 +1,7 @@
 REST API for posts with JWT authentication.
 
 Instalation:
+------
 ```bash
 $git clone https://github.com/Grazvydas-M/crud_api_with_auth.git
 $cd crud_api_with_auth
@@ -10,6 +11,23 @@ Run the project:
 ```bash
 $ docker compose up -d
 ```
+Enter php container:
+```bash
+docker exec -it symfony_php bash
+composer install
+```
+Create database and run migrations:
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+```
+
+Generate JWT keys:
+```bash
+php bin/console lexik:jwt:generate-keypair
+```
+
+
 Login:
 To get JWT token make POST request to **/api/login_check**.
 Request body:
@@ -19,7 +37,7 @@ Request body:
   "password": "123456"
 }
 ```
-To test endpoints use authorization Bearer Token and your generated jwt token.
+To test endpoints use authorization **Bearer Token** and your generated jwt token.
 
 Examples:
 ------
