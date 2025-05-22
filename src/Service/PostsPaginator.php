@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Post;
 use App\Repository\PostRepository;
 
 readonly class PostsPaginator
@@ -10,11 +11,13 @@ readonly class PostsPaginator
     {
     }
 
+    /**
+     * @return Post[]
+     */
     public function paginate(int $page, int $limit): array
     {
         $offset = ($page - 1) * $limit;
 
         return $this->postRepository->getPosts($offset, $limit);
     }
-
 }
