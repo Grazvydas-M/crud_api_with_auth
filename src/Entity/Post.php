@@ -89,6 +89,4 @@ class Post
 
         return $this;
     }
-
-
 }
